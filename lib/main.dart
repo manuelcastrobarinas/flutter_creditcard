@@ -17,6 +17,11 @@ class MyApp extends StatelessWidget {
       routes: routes,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        appBarTheme: const AppBarTheme(
+          color: Color.fromARGB(255, 31, 47, 84), 
+          titleTextStyle: TextStyle(color: Colors.white, fontSize: 22), 
+          iconTheme: IconThemeData(color: Colors.white)
+        ),
         useMaterial3: true,
       ),
     );
