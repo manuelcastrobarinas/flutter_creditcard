@@ -8,8 +8,8 @@ class PaymentsCompletePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(title: Text('pago Realizado!')),
-      body: Center(
+      appBar: AppBar(title: const Text('pago Realizado!')),
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
