@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
+import 'package:pagos_app/bloc/payment/payment_bloc.dart';
 import 'package:pagos_app/data/tarjetas.dart';
 import 'package:pagos_app/helpers/alerts.dart';
 import 'package:pagos_app/helpers/navegate_fadein.dart';
@@ -63,6 +65,7 @@ class _TargetsListBuilder extends StatelessWidget {
         final tarjeta = tarjetas[i];
         return GestureDetector(
           onTap: () {
+            BlocProvider.of<PaymentBloc>(context).add(OnSelectTarget(target: tarjeta));
             Navigator.push(context, navegateFadeIn(context, const TargetsPage()));
           },
           child: Hero(
