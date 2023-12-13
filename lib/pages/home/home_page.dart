@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:pagos_app/data/tarjetas.dart';
+import 'package:pagos_app/helpers/alerts.dart';
 import 'package:pagos_app/helpers/navegate_fadein.dart';
 import 'package:pagos_app/pages/targets/targets_page.dart';
 
@@ -17,7 +18,14 @@ class HomePage extends StatelessWidget {
         title: const Text('pagar'),
         actions: [
           IconButton(
-            onPressed: (){}, 
+            onPressed: () async {
+              // showLoading(context);
+              // await Future.delayed(const Duration(seconds: 1));
+              // if(!context.mounted) return;
+              // Navigator.pop(context);
+
+              showAlert(context, 'hola', 'mundo');
+            }, 
             icon: const  Icon(Icons.add),
           )
         ],
