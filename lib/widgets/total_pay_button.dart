@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:pagos_app/bloc/payment/payment_bloc.dart';
 
 class TotalPayButton extends StatelessWidget {
   const TotalPayButton({
@@ -16,18 +18,22 @@ class TotalPayButton extends StatelessWidget {
         color : Colors.white,
         borderRadius: BorderRadius.only( topLeft: Radius.circular(30), topRight: Radius.circular(30))
       ),
-      child : const Row(
+      child : Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-        Column(
+        const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
           Text('Total'),
           Text('250.55 USD')
         ]),
-        _ButtonPay(),
+        BlocBuilder<PaymentBloc, PaymentState>(
+          builder: (context, state) {
+            return  _ButtonPay(state: state);
+          },
+        ),
        
       ]),
     );
@@ -35,11 +41,12 @@ class TotalPayButton extends StatelessWidget {
 }
 
 class _ButtonPay extends StatelessWidget {
-  const _ButtonPay();
+  final PaymentState state;
+  const _ButtonPay({required this.state});
 
   @override
   Widget build(BuildContext context) {
-    return true
+    return state.isTargetActive
     ? const BuildButtonTarget()
     : const BuildButtonAppleAndGooglePay();
   }
